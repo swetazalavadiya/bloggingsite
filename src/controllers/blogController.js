@@ -7,14 +7,14 @@ const createBlog = async function (req, res) {
   try {
 
     let data = req.body
-    let {title, body, authorId, tags, category, subcategory}=data
+    let { title, body, authorId, tags, category, subcategory } = data
 
-      if(!title)return res.status(400).send ({status:false, message:"title required"})
-      if(!body)return res.status(400).send ({status:false, message:"body required"})
-      if(!authorId)return res.status(400).send ({status:false, message:"authorId required"})
-      if(!tags)return res.status(400).send ({status:false, message:"tags required"})
-      if(!category)return res.status(400).send ({status:false, message:"category required"})
-      if(!subcategory)return res.status(400).send ({status:false, message:"subcategory required"})
+    if (!title) return res.status(400).send({ status: false, message: "title required" })
+    if (!body) return res.status(400).send({ status: false, message: "body required" })
+    if (!authorId) return res.status(400).send({ status: false, message: "authorId required" })
+    if (!tags) return res.status(400).send({ status: false, message: "tags required" })
+    if (!category) return res.status(400).send({ status: false, message: "category required" })
+    if (!subcategory) return res.status(400).send({ status: false, message: "subcategory required" })
 
     if (!validation.title(data.title)) return res.status(400).send({ status: false, message: "invalid title" })
     if (!validation.body(data.body)) return res.status(400).send({ status: false, message: "invalid body" })
@@ -63,7 +63,7 @@ const update = async function (req, res) {
       { new: true })
 
     if (!update) return res.status(404).send({ message: "this is wrong id" })
-    res.status(200).send({ status: true, msg: update})
+    res.status(200).send({ status: true, msg: update })
 
   } catch (error) {
     res.status(500).send({ status: false, error: error.message, message: "server error" })

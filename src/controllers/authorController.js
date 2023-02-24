@@ -26,10 +26,10 @@ const createAuthor = async function (req, res) {
     
 }
 
-const login = async function (req, res, next) {
+const login = async function (req, res) {
     try {
         let { password, email } = req.body
-        if (password == undefined, email == undefined) return res.status(400).send({ message: "send password and email  value" })
+        if (password == undefined, email == undefined) return res.status(400).send({ message: "send password and email value" })
         let data = await authorModel.findOne({ password: password, email: email })
         if (!data) return res.status(400).send({ message: "this is not match password and email" })
         
